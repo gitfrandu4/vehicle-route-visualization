@@ -2,17 +2,28 @@
 
 ![Animación de rutas de vehículos](assets/map.gif)
 
+![Three.js](https://img.shields.io/badge/Three.js-black?style=flat&logo=three.js&logoColor=white)
+![WebGL](https://img.shields.io/badge/WebGL-990000?style=flat&logo=webgl&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
+
 ## Índice
 
 - [Visualización Interactiva de Rutas de Vehículos en Gran Canaria](#visualización-interactiva-de-rutas-de-vehículos-en-gran-canaria)
   - [Índice](#índice)
-  - [Descripción](#descripción)
-  - [Características](#características)
-  - [Tecnologías Utilizadas](#tecnologías-utilizadas)
+  - [📖 Descripción](#-descripción)
+  - [🚀 Características](#-características)
+    - [🗺️ Visualización](#️-visualización)
+    - [🎨 Efectos Visuales](#-efectos-visuales)
+    - [🎮 Controles](#-controles)
+  - [🛠️ Tecnologías](#️-tecnologías)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
   - [Instalación](#instalación)
     - [Prerrequisitos](#prerrequisitos)
     - [Pasos de Instalación](#pasos-de-instalación)
-  - [Uso](#uso)
+  - [💻 Uso](#-uso)
   - [Funcionamiento Interno](#funcionamiento-interno)
     - [Carga de Mapas](#carga-de-mapas)
     - [Procesamiento de Datos](#procesamiento-de-datos)
@@ -23,26 +34,42 @@
     - [Mapa Diurno con Rutas Activas](#mapa-diurno-con-rutas-activas)
     - [Mapa Nocturno con Rutas Completadas](#mapa-nocturno-con-rutas-completadas)
 
-## Descripción
+## 📖 Descripción
 
-Este proyecto es una aplicación web interactiva que permite visualizar las rutas de una flota de vehículos de transporte de mercancías en la isla de Gran Canaria. Utilizando **Three.js** y **shaders personalizados**, se representa el movimiento de los vehículos sobre un mapa, ofreciendo una experiencia visualmente atractiva e informativa.
+Este proyecto es una aplicación web interactiva que permite visualizar las rutas de una flota de vehículos en la isla de Gran Canaria. Utilizando **Three.js** y **shaders personalizados**, se representa el movimiento de los vehículos sobre un mapa, ofreciendo una experiencia visualmente atractiva e informativa.
 
-## Características
+## 🚀 Características
 
-- **Mapa Interactivo 3D**: Navega, rota y haz zoom en el mapa de Gran Canaria.
-- **Animación de Rutas**: Visualiza las trayectorias de los vehículos animadas en función del tiempo.
-- **Interfaz Personalizable**: Ajusta parámetros como la oscuridad del mapa, la transición día/noche y filtra por identificador de vehículo.
-- **Efectos Visuales Avanzados**: Shaders personalizados para destacar rutas activas y completadas con efectos de plasma y pulsaciones.
-- **Datos en Tiempo Real**: Actualización dinámica de las rutas basadas en datos GPS.
+### 🗺️ Visualización
+- Mapa interactivo 3D con controles OrbitControls
+- Transición día/noche con shaders personalizados
+- Sistema de tiles dinámico basado en coordenadas GPS
 
-## Tecnologías Utilizadas
+### 🎨 Efectos Visuales
+- Shaders GLSL para efectos de desvanecimiento
+- Efectos de plasma para rutas completadas
+- Partículas pulsantes para rutas activas
+- Sistema de mezcla de mapas día/noche
 
-- **Three.js**: Biblioteca para gráficos 3D en WebGL.
-- **lil.GUI**: Herramienta ligera para crear interfaces gráficas de usuario.
-- **Shaders GLSL**: Programación gráfica para efectos visuales avanzados.
-- **JavaScript ES6**: Lenguaje de programación principal.
-- **Webpack**: Empaquetador de módulos JavaScript.
+### 🎮 Controles
+- GUI interactiva con lil-gui
+- Filtrado de rutas por vehículo
+- Control de tiempo y animación
+- Ajustes de visualización en tiempo real
+
+## 🛠️ Tecnologías
+
+### Frontend
+- **Three.js**: Motor de renderizado 3D
+- **GLSL**: Shaders personalizados para efectos visuales
+- **lil-gui**: Interfaz de usuario para controles
 - **Thunderforest Maps**: Proveedor de tiles para mapas diurnos y nocturnos.
+- **OpenStreetMap**: Fuente de datos para mapas base
+
+### Backend
+- **Node.js**: Runtime de JavaScript
+- **Express**: Servidor web minimalista
+- **ES6 Modules**: Sistema de módulos nativo
 
 ## Instalación
 
@@ -79,17 +106,17 @@ Este proyecto es una aplicación web interactiva que permite visualizar las ruta
 
 5. **Abre tu navegador** e ingresa a `http://localhost:3000`.
 
-## Uso
+## 💻 Uso
 
-- **Interacción con el Mapa**:
+- **Controles del Mapa**:
 
-  - **Rotar**: Click izquierdo y arrastrar.
-  - **Zoom**: Rueda del mouse.
-  - **Desplazar**: Click derecho y arrastrar.
+  * 🖱️ Click Izquierdo + Arrastrar: Rotar vista
+  * 🖱️ Click Derecho + Arrastrar: Pan
+  * 🖱️ Rueda: Zoom
 
 - **Panel de Control (lil.GUI)**:
 
-  - **Fade Duration (ms)**: Controla la duración del efecto de desvanecimiento de las rutas.
+  - **Atenuación (ms)**: Controla la duración del efecto de desvanecimiento de las rutas.
   - **Oscuridad del mapa**: Ajusta la luminosidad del mapa base.
   - **Transición Día/Noche**: Controla la mezcla entre mapas diurnos y nocturnos.
   - **Vehículo**: Filtra la visualización por identificador de vehículo.
@@ -141,4 +168,3 @@ Puedes personalizar varios aspectos del proyecto:
 ### Mapa Nocturno con Rutas Completadas
 
 ![Mapa Diurno](assets/mapa-nocturno.png)
-
