@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Transporte de Mercancías - Gran Canaria</title>
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <body>
+        <!-- Panel de información principal -->
+        <div class="info-panel">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span>Tiempo:</span>
+                    <span id="elapsed-time">00:00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leyenda mejorada -->
+        <div class="legend">
+            <!-- <div class="legend-title">Estado de Rutas</div> -->
+            <div class="legend-item">
+                <div class="legend-color active" style="background-color: #00ff00;"></div>
+                <span>Ruta Activa</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #ff0000;"></div>
+                <span>Ruta Completada</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #4169E1;"></div>
+                <span>Trayectoria Reciente</span>
+            </div>
+        </div>
+
+        <!-- Contenedor de fecha -->
+        <div class="date-container">
+            <p class="date-text"></p>
+        </div>
+
+        <div class="date-container">
+            <h1 class="date-text">Tránsito de Mercancías - Gran Canaria</h1>
+        </div>
+
+        <!--Carga de módulos-->
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.152.1/build/three.module.js",
+                    "three/": "https://cdn.skypack.dev/three@0.152.1/"
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.20"></script>
+        <script src="/test_2_2.js" type="module"></script>
+    </body>
+</html>

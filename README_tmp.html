@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/franciscoj./Documents/GII-41/40984-CN/ieee.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="visualizaci%C3%B3n-interactiva-de-rutas-de-veh%C3%ADculos-en-gran-canaria">Visualización Interactiva de Rutas de Vehículos en Gran Canaria</h1>
+<p><img src="file:///Users/franciscoj./Documents/GII-41/vehicle-route-visualization/assets/map.gif" alt="Animación de rutas de vehículos"></p>
+<h2 id="%C3%ADndice">Índice</h2>
+<ul>
+<li><a href="#visualizaci%C3%B3n-interactiva-de-rutas-de-veh%C3%ADculos-en-gran-canaria">Visualización Interactiva de Rutas de Vehículos en Gran Canaria</a>
+<ul>
+<li><a href="#%C3%ADndice">Índice</a></li>
+<li><a href="#descripci%C3%B3n">Descripción</a></li>
+<li><a href="#caracter%C3%ADsticas">Características</a></li>
+<li><a href="#tecnolog%C3%ADas-utilizadas">Tecnologías Utilizadas</a></li>
+<li><a href="#instalaci%C3%B3n">Instalación</a>
+<ul>
+<li><a href="#prerrequisitos">Prerrequisitos</a></li>
+<li><a href="#pasos-de-instalaci%C3%B3n">Pasos de Instalación</a></li>
+</ul>
+</li>
+<li><a href="#uso">Uso</a></li>
+<li><a href="#funcionamiento-interno">Funcionamiento Interno</a>
+<ul>
+<li><a href="#carga-de-mapas">Carga de Mapas</a></li>
+<li><a href="#procesamiento-de-datos">Procesamiento de Datos</a></li>
+<li><a href="#shaders-personalizados">Shaders Personalizados</a></li>
+<li><a href="#interfaz-gr%C3%A1fica">Interfaz Gráfica</a></li>
+</ul>
+</li>
+<li><a href="#personalizaci%C3%B3n">Personalización</a></li>
+<li><a href="#capturas-de-pantalla">Capturas de Pantalla</a>
+<ul>
+<li><a href="#mapa-diurno-con-rutas-activas">Mapa Diurno con Rutas Activas</a></li>
+<li><a href="#mapa-nocturno-con-rutas-completadas">Mapa Nocturno con Rutas Completadas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="descripci%C3%B3n">Descripción</h2>
+<p>Este proyecto es una aplicación web interactiva que permite visualizar las rutas de una flota de vehículos de transporte de mercancías en la isla de Gran Canaria. Utilizando <strong>Three.js</strong> y <strong>shaders personalizados</strong>, se representa el movimiento de los vehículos sobre un mapa, ofreciendo una experiencia visualmente atractiva e informativa.</p>
+<h2 id="caracter%C3%ADsticas">Características</h2>
+<ul>
+<li><strong>Mapa Interactivo 3D</strong>: Navega, rota y haz zoom en el mapa de Gran Canaria.</li>
+<li><strong>Animación de Rutas</strong>: Visualiza las trayectorias de los vehículos animadas en función del tiempo.</li>
+<li><strong>Interfaz Personalizable</strong>: Ajusta parámetros como la oscuridad del mapa, la transición día/noche y filtra por identificador de vehículo.</li>
+<li><strong>Efectos Visuales Avanzados</strong>: Shaders personalizados para destacar rutas activas y completadas con efectos de plasma y pulsaciones.</li>
+<li><strong>Datos en Tiempo Real</strong>: Actualización dinámica de las rutas basadas en datos GPS.</li>
+</ul>
+<h2 id="tecnolog%C3%ADas-utilizadas">Tecnologías Utilizadas</h2>
+<ul>
+<li><strong>Three.js</strong>: Biblioteca para gráficos 3D en WebGL.</li>
+<li><strong>lil.GUI</strong>: Herramienta ligera para crear interfaces gráficas de usuario.</li>
+<li><strong>Shaders GLSL</strong>: Programación gráfica para efectos visuales avanzados.</li>
+<li><strong>JavaScript ES6</strong>: Lenguaje de programación principal.</li>
+<li><strong>Webpack</strong>: Empaquetador de módulos JavaScript.</li>
+<li><strong>Thunderforest Maps</strong>: Proveedor de tiles para mapas diurnos y nocturnos.</li>
+</ul>
+<h2 id="instalaci%C3%B3n">Instalación</h2>
+<h3 id="prerrequisitos">Prerrequisitos</h3>
+<ul>
+<li><strong>Node.js</strong> (versión 12 o superior)</li>
+<li><strong>npm</strong> o <strong>yarn</strong></li>
+</ul>
+<h3 id="pasos-de-instalaci%C3%B3n">Pasos de Instalación</h3>
+<ol>
+<li>
+<p><strong>Clona el repositorio</strong>:</p>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/gitfrandu4/visualizacion-rutas-vehiculos.git
+</div></code></pre>
+</li>
+<li>
+<p><strong>Navega al directorio del proyecto</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> visualizacion-rutas-vehiculos
+</div></code></pre>
+</li>
+<li>
+<p><strong>Instala las dependencias</strong>:</p>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+</li>
+<li>
+<p><strong>Inicia la aplicación</strong>:</p>
+<pre class="hljs"><code><div>npm start
+</div></code></pre>
+</li>
+<li>
+<p><strong>Abre tu navegador</strong> e ingresa a <code>http://localhost:3000</code>.</p>
+</li>
+</ol>
+<h2 id="uso">Uso</h2>
+<ul>
+<li>
+<p><strong>Interacción con el Mapa</strong>:</p>
+<ul>
+<li><strong>Rotar</strong>: Click izquierdo y arrastrar.</li>
+<li><strong>Zoom</strong>: Rueda del mouse.</li>
+<li><strong>Desplazar</strong>: Click derecho y arrastrar.</li>
+</ul>
+</li>
+<li>
+<p><strong>Panel de Control (lil.GUI)</strong>:</p>
+<ul>
+<li><strong>Fade Duration (ms)</strong>: Controla la duración del efecto de desvanecimiento de las rutas.</li>
+<li><strong>Oscuridad del mapa</strong>: Ajusta la luminosidad del mapa base.</li>
+<li><strong>Transición Día/Noche</strong>: Controla la mezcla entre mapas diurnos y nocturnos.</li>
+<li><strong>Vehículo</strong>: Filtra la visualización por identificador de vehículo.</li>
+<li><strong>Animación</strong>: Pausa o reanuda la animación de las rutas.</li>
+<li><strong>Mostrar rutas completadas</strong>: Muestra u oculta las rutas ya completadas.</li>
+<li><strong>Reiniciar</strong>: Reinicia la animación al tiempo inicial.</li>
+</ul>
+</li>
+</ul>
+<h2 id="funcionamiento-interno">Funcionamiento Interno</h2>
+<h3 id="carga-de-mapas">Carga de Mapas</h3>
+<p>Se utilizan tiles de <strong>Thunderforest</strong> para los mapas diurnos y nocturnos. Los tiles se cargan dinámicamente según la posición y nivel de zoom, y se combinan mediante shaders para permitir la transición suave entre día y noche.</p>
+<blockquote>
+<p>[!IMPORTANT]<br>
+Reemplaza las claves de API de Thunderforest con las tuyas propias en el código.</p>
+</blockquote>
+<h3 id="procesamiento-de-datos">Procesamiento de Datos</h3>
+<ul>
+<li><strong>Carga de Datos</strong>: Los datos de las coordenadas de los vehículos se cargan desde <code>vehicle-coordinates.csv</code>.</li>
+<li><strong>Procesamiento</strong>: Se agrupan y ordenan las coordenadas por vehículo y tiempo.</li>
+<li><strong>Generación de Trayectorias</strong>: Se crean geometrías de líneas para cada vehículo utilizando las coordenadas procesadas.</li>
+</ul>
+<h3 id="shaders-personalizados">Shaders Personalizados</h3>
+<p>Se utilizan shaders para:</p>
+<ul>
+<li><strong>Efecto de Desvanecimiento</strong>: Las rutas se desvanecen con el tiempo según la configuración de fade.</li>
+<li><strong>Visualización de Rutas Completadas</strong>: Las rutas finalizadas muestran un efecto de plasma para diferenciarlas.</li>
+<li><strong>Transición Día/Noche</strong>: Se mezcla el mapa diurno y nocturno según el factor de transición establecido.</li>
+</ul>
+<h3 id="interfaz-gr%C3%A1fica">Interfaz Gráfica</h3>
+<p>Utilizando <strong>lil.GUI</strong>, se proporciona una interfaz intuitiva para que el usuario pueda ajustar parámetros en tiempo real y observar los cambios inmediatamente en la visualización.</p>
+<h2 id="personalizaci%C3%B3n">Personalización</h2>
+<p>Puedes personalizar varios aspectos del proyecto:</p>
+<ul>
+<li><strong>Claves de API de Mapas</strong>: Reemplaza las claves de API de Thunderforest con las tuyas propias en el código.</li>
+<li><strong>Datos de Vehículos</strong>: Actualiza o reemplaza <code>vehicle-coordinates.csv</code> con tus propios datos.</li>
+<li><strong>Parámetros Iniciales</strong>: Ajusta los valores predeterminados en <code>server.js</code> para cambiar la configuración inicial.</li>
+</ul>
+<h2 id="capturas-de-pantalla">Capturas de Pantalla</h2>
+<h3 id="mapa-diurno-con-rutas-activas">Mapa Diurno con Rutas Activas</h3>
+<p><img src="file:///Users/franciscoj./Documents/GII-41/vehicle-route-visualization/assets/mapa-diurno.png" alt="Mapa Nocturno"></p>
+<h3 id="mapa-nocturno-con-rutas-completadas">Mapa Nocturno con Rutas Completadas</h3>
+<p><img src="file:///Users/franciscoj./Documents/GII-41/vehicle-route-visualization/assets/mapa-nocturno.png" alt="Mapa Diurno"></p>
+
+</body>
+</html>

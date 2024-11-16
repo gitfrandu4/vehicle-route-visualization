@@ -1,0 +1,23 @@
+{
+    "name": "my-gomix-app",
+    "version": "0.0.1",
+    "description": "What am I about?",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.21.0"
+    },
+    "engines": {
+        "node": "20.x"
+    },
+    "license": "MIT",
+    "keywords": [
+        "node",
+        "express"
+    ],
+    "devDependencies": {
+        "lil-gui": "^0.19.2"
+    }
+}

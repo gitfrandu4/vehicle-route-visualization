@@ -1,0 +1,157 @@
+/* Estilos base */
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #1a1a1a;
+
+	font-family: "Geist Mono", monospace;
+	font-optical-sizing: auto;
+}
+
+/* Contenedor de fecha con efecto de cristal */
+.date-container {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #6a75d8;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+	padding: 15px 30px;
+	border-radius: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.date-container:hover {
+	background: rgba(255, 255, 255, 0.15);
+	transform: translateX(-50%) translateY(-2px);
+}
+
+/* Estilo para la fecha */
+.date-text {
+	font-family: "Geist Mono", monospace;
+	color: #ffffff;
+	font-size: 1.5rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	margin: 0;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Panel de información */
+.info-panel {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	background-color: #6a75d8;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	border-radius: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	min-width: 250px;
+}
+
+.stats-container {
+	display: grid;
+	grid-gap: 15px;
+	color: white;
+}
+
+.stat-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 0;
+	/* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+/* Leyenda mejorada */
+.legend {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background-color: #6a75d8;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	border-radius: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: white;
+}
+
+.legend-title {
+	font-weight: 600;
+	margin-bottom: 10px;
+	font-size: 1.1em;
+	color: #ffffff;
+}
+
+.legend-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	padding: 5px;
+	transition: all 0.3s ease;
+}
+
+.legend-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+}
+
+.legend-color {
+	width: 24px;
+	height: 24px;
+	margin-right: 12px;
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.legend-color.active {
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 0.8;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Estilos para los controles GUI */
+.lil-gui {
+	/* backdrop-filter: blur(10px) !important;
+    background: rgba(255, 255, 255, 0.1) !important; */
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	border-radius: 10px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	.date-container {
+		width: 90%;
+		font-size: 1.2rem;
+	}
+
+	.info-panel {
+		width: 90%;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 10px;
+	}
+}
