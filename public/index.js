@@ -1,4 +1,3 @@
-
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -113,7 +112,7 @@ function init() {
 	const gui = new GUI();
 	gui
 		.add(guiParams, 'fadeDuration', 1000, 14000)
-		.name('Fade Duration (ms)')
+		.name('Atenuación (ms)')
 		.onChange(function (value) {
 			fadeDurationUniform.value = value;
 		});
@@ -155,7 +154,7 @@ function init() {
 			updateVehicleVisibility();
 		});
 	// Add Restart button
-	gui.add({ restart: restartAnimation }, 'restart').name('Restart');
+	gui.add({ restart: restartAnimation }, 'restart').name('Reiniciar');
 }
 
 // Function to reset the animation
