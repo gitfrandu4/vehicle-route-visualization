@@ -10,6 +10,7 @@ var app = express();
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
+app.use(express.static('assets'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
