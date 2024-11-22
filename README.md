@@ -28,6 +28,11 @@
     - [Carga de Mapas](#carga-de-mapas)
     - [Procesamiento de Datos](#procesamiento-de-datos)
     - [Shaders Personalizados](#shaders-personalizados)
+      - [Carga de Texturas](#carga-de-texturas)
+      - [ShaderMaterial para el Mapa](#shadermaterial-para-el-mapa)
+      - [Vertex Shader](#vertex-shader)
+      - [Fragment Shader](#fragment-shader)
+      - [Interacción con la Interfaz Gráfica](#interacción-con-la-interfaz-gráfica)
     - [Interfaz Gráfica](#interfaz-gráfica)
   - [Personalización](#personalización)
   - [Capturas de Pantalla](#capturas-de-pantalla)
@@ -146,6 +151,95 @@ Se utilizan shaders para:
 - **Efecto de Desvanecimiento**: Las rutas se desvanecen con el tiempo según la configuración de fade.
 - **Visualización de Rutas Completadas**: Las rutas finalizadas muestran un efecto de plasma para diferenciarlas.
 - **Transición Día/Noche**: Se mezcla el mapa diurno y nocturno según el factor de transición establecido.
+
+#### Carga de Texturas
+
+Para cada tile, se cargan dos texturas: una versión diurna y otra nocturna. Las URLs de los tiles son las siguientes:
+
+```js
+const urlDay = `https://a.tile.openstreetmap.org/${zoom}/${x}/${y}.png`;
+const urlNight = `https://b.tile.openstreetmap.org/${zoom}/${x}/${y}.png`;
+```
+
+#### ShaderMaterial para el Mapa
+
+Se utiliza un **ShaderMaterial** que combina las texturas de día y noche. La combinación se controla mediante un parámetro de mezcla (`blendFactor`), lo que permite una transición suave entre ambas versiones del mapa. También se incluye un parámetro de oscuridad (`darkness`) para ajustar la luminosidad del mapa.
+
+```js
+const material = new THREE.ShaderMaterial({
+  uniforms: {
+    textureDay: { value: textureDay },
+    textureNight: { value: textureNight },
+    blendFactor: { value: guiParams.blendFactor },
+    darkness: { value: guiParams.guiDarkness },
+  },
+  vertexShader: `...`,
+  fragmentShader: `...`,
+});
+```
+
+#### Vertex Shader
+
+El vertex shader transmite las coordenadas de textura de los vértices al fragment shader.
+
+```js
+varying vec2 vUv;
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+```
+
+- **`vUv`**: Transfiere las coordenadas de textura al fragment shader.
+- **`gl_Position`**: Calcula la posición del vértice en el espacio de proyección.
+
+#### Fragment Shader
+
+El fragment shader combina las texturas de día y noche y aplica un efecto de oscuridad.
+
+```js
+uniform sampler2D textureDay;
+uniform sampler2D textureNight;
+uniform float blendFactor;
+uniform float darkness;
+varying vec2 vUv;
+void main() {
+  vec4 colorDay = texture2D(textureDay, vUv);
+  vec4 colorNight = texture2D(textureNight, vUv);
+  vec4 finalColor = mix(colorDay, colorNight, blendFactor);
+  finalColor.rgb *= 1.0 - darkness; // Aplicar oscuridad
+  gl_FragColor = finalColor;
+}
+```
+
+- **Uniformes**:
+  - **`textureDay`** y **`textureNight`**: Texturas del mapa para día y noche.
+  - **`blendFactor`**: Controla la mezcla entre las texturas diurna y nocturna.
+  - **`darkness`**: Ajusta el nivel de oscuridad aplicado al mapa.
+
+- **Proceso**:
+  1. Se obtienen los colores de las texturas de día y noche en las coordenadas `vUv`.
+  2. Se combinan los colores usando `mix` y el valor de `blendFactor`.
+  3. Se aplica la oscuridad multiplicando el color resultante por `(1.0 - darkness)`.
+  4. Se asigna el color final a `gl_FragColor`.
+
+#### Interacción con la Interfaz Gráfica
+
+La interfaz gráfica permite ajustar dinámicamente los parámetros `blendFactor` y `darkness` para personalizar la visualización del mapa.
+
+```js
+gui.add(guiParams, 'blendFactor', 0, 1).name('Transición Día/Noche').onChange((value) => {
+  mapa.children.forEach((mesh) => {
+    mesh.material.uniforms.blendFactor.value = value;
+  });
+});
+
+gui.add(guiParams, 'guiDarkness', 0.0, 1.0).name('Oscuridad del mapa').onChange((value) => {
+  mapa.children.forEach((mesh) => {
+    mesh.material.uniforms.darkness.value = value;
+  });
+});
+```
 
 ### Interfaz Gráfica
 
